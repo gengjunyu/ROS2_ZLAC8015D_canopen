@@ -41,32 +41,32 @@ class MotorsDriverNode : public rclcpp::Node
   private:
     void topic_callback(const overlord100_msgs::msg::WheelsData & msg)
     {
-      //Make int
+      //转换为整数
       int left = std::round(msg.left);
       int right = std::round(msg.right);
 
-      //Bound velocity between -255 and 255 rev/min
+      //将速度限制在-255到255转/分钟之间
       left = std::clamp(left, -0xFF, 0xFF);
       right = std::clamp(right, -0xFF, 0xFF);
 
-      //Send data over CAN
+      //通过CAN发送数据
       can_msgs::msg::Frame CANmsg = synchronized_velocity_send_frame((u_int16_t)left, (u_int16_t)right);
       can_output->publish(CANmsg);
 
     }
 
     can_msgs::msg::Frame synchronized_velocity_send_frame(u_int16_t l, u_int16_t r){
-      // Server send function code = 1100 (0xC)
+      //服务器发送功能代码 = 1100 (0xC)
       u_int32_t COB_ID = (0xC << 7) + (u_int32_t)NODE_ID;
 
       std::array<uint8_t, 8UL> data;
-      data[0] = 0x23; //Send request
+      data[0] = 0x23; //发送请求
       data[1] = 0xFF;
-      data[2] = 0x60; //0x60FF - index
-      data[3] = 0x03; //subindex
-      data[4] = l;    //left wheel velocity 
+      data[2] = 0x60; //0x60FF - 索引
+      data[3] = 0x03; //子索引
+      data[4] = l;    //左轮速度 
       data[5] = l >> 8;
-      data[6] = r;    //right wheel velocity 
+      data[6] = r;    //右轮速度 
       data[7] = r >> 8;
 
       can_msgs::msg::Frame frame;

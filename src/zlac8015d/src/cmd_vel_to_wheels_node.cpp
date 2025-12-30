@@ -41,8 +41,8 @@ private:
         double angular_z = std::max(-max_angular_speed_, std::min(max_angular_speed_, msg->angular.z));
         
         // 差分驱动运动学模型
-        // v_left = v_x - (omega * wheel_base / 2)
-        // v_right = v_x + (omega * wheel_base / 2)
+        // 左轮速度 = 线速度 - (角速度 * 轮距 / 2)
+        // 右轮速度 = 线速度 + (角速度 * 轮距 / 2)
         
         wheels_cmd->left = linear_x - (angular_z * wheel_base_ / 2.0);
         wheels_cmd->right = linear_x + (angular_z * wheel_base_ / 2.0);

@@ -5,10 +5,10 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+# 查找依赖
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
+# 取消注释以下部分以手动填写
+# 进一步的依赖项。
 # find_package(<dependency> REQUIRED)
 
 find_package(rclcpp REQUIRED)
@@ -33,12 +33,12 @@ install(TARGETS motors_driver_node cmd_vel_to_wheels_node
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
+  # 以下行跳过检查版权的linter
+  # 当版权和许可证添加到所有源文件时，注释掉此行
   set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
+  # 以下行跳过cpplint（仅在git仓库中工作）
+  # 当此包在git仓库中且
+  # 版权和许可证添加到所有源文件时，注释掉此行
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
