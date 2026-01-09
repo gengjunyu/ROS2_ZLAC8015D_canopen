@@ -42,5 +42,3 @@ CAN→ROS2：订阅 CAN 总线数据（ROS2 端接收）
 bash
 运行
 ros2 topic echo /can_rx
-
-。
