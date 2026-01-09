@@ -37,7 +37,10 @@ ROS2→CAN：发布 ROS2 CAN 帧消息到 CAN 总线
 bash
 运行
 ros2 topic pub /can_tx can_msgs/msg/Frame "{id: 0x123, dlc: 2, data: [0x01, 0x02], is_extended: false}" --once
+
 CAN→ROS2：订阅 CAN 总线数据（ROS2 端接收）
 bash
 运行
 ros2 topic echo /can_rx
+
+。
