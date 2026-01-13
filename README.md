@@ -40,15 +40,14 @@ sudo apt-get install python3-can
 ```bash
 mkdir -p ~/canopen_ws/src
 cd ~/canopen_ws/src
-# 假设你已经克隆了代码库
-# git clone <your-repo-url> zlac8015d_control
+git clone https://github.com/gengjunyu/ROS2_ZLAC8015D_canopen.git
 ```
 
 ### 3. 编译工作空间
 
 ```bash
 cd ~/canopen_ws
-colcon build --packages-select zlac8015d_control
+colcon build
 source install/setup.bash
 ```
 
