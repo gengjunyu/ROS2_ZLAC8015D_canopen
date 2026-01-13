@@ -362,9 +362,6 @@ class CustomCANopenInterface(CANopenInterface):
 6. **参数配置**: 编码器分辨率和机械参数需要根据实际硬件配置
 7. **安全**: 首次使用时建议在安全环境下测试，确保急停功能正常
 
-## 📄 许可证
-
-MIT License
 
 ## 🙏 致谢
 
